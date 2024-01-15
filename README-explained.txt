@@ -18,7 +18,7 @@ $ aws iam create-policy --policy-name capstone-pol --policy-document file://iam_
 - create role:
 $ aws iam create-role --role-name capstone-role --region us-east-1 --assume-role-policy-document file://trust_policy.json
 - attaches policy to role:
-$ aws iam attach-role-policy --role-name capstone-role -arn:aws:iam::113895760252:policy/capstone-pol --region us-east-1 --output text
+$ aws iam attach-role-policy --role-name capstone-role -arn:aws:iam::<confidential-acc-id>:policy/capstone-pol --region us-east-1 --output text
 
 
 --section 4--
