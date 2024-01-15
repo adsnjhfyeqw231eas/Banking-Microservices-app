@@ -66,5 +66,10 @@ For our build to work, copy the kubectonfig file to /var/lib/jenkins/.kube/confi
 if docker requires sudo just restart the jenkins service only once.
 
 
+Clean UP resources:
+cleanup:
+eksctl delete nodegroup workers --cluster=capstone-eks --region=us-east-1
+eksctl delete cluster capstone-eks --region=us-east-1
+terraform destroy
 
 
