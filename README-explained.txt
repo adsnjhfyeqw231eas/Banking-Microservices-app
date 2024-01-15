@@ -1,4 +1,4 @@
---ection 1--
+--section 1--
 goal: "terraform : create ec2 with ansible,kubectl,eksctl,awscli installed as ec2 user-data." 
 $ terraform init; terraform plan ; terraform apply
 
@@ -42,7 +42,7 @@ metadata:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: aws-load-balancer-controller
   annotations:                                                                        # Add the annotations line
-    eks.amazonaws.com/role-arn:  arn:aws:iam::11388765322987:role/eksctl-capstone-eks-addon-iamserviceaccount-k-Role1-w1A2RSCEdqmS              # Add the IAM role
+    eks.amazonaws.com/role-arn:  arn:aws:iam::<confidential-ac-id>:role/eksctl-capstone-eks-addon-iamserviceaccount-k-Role1-w1A2RSCEdqmS              # Add the IAM role
   name: aws-load-balancer-controller
   namespace: kube-system
 
