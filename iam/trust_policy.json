@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Principal": {
+                "Federated": "arn:aws:iam::<confidentialaccid>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/B086740DE9FA6C56D0617B18DAB94EED"
+            },
+            "Condition": {
+                "StringEquals": {
+                    "oidc.eks.us-east-1.amazonaws.com/id/B086740DE9FA6C56D0617B18DAB94EED:aud": [
+                        "sts.amazonaws.com"
+                    ]
+                }
+            }
+        }
+    ]
+}

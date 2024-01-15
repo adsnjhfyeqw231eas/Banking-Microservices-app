@@ -1,0 +1,65 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: citibank
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-citibank
+  namespace: citibank
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: citibank
+  template:
+    metadata:
+      labels:
+        app: citibank
+    spec:
+      containers:
+      - name: citibank
+        image: tridevg/citibank
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-citibank
+  namespace: citibank
+spec:
+  selector:
+    app: citibank
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: citibank
+  name: ingress-citibank
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: service-citibank
+              port:
+                number: 80

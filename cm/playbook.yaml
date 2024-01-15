@@ -1,0 +1,11 @@
+---
+- hosts: server
+  become: yes
+  tasks:
+    - name: setup jenkins server
+      command: bash setup.sh
+      register: eks
+
+    - debug: msg= "{{ eks.stdout }}"
+
+    - debug: msg= "{{ eks.stderr }}"
